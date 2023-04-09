@@ -1,36 +1,44 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# YvesBlue Frontend Challenge
+
+Here is a challenge we would like you to complete to help assess and show off your frontend skills. This is an example of a real world problem you would need to solve while working at YvesBlue. We do not expect you to spend more than a couple of hours on this project.
 
 ## Getting Started
 
-First, run the development server:
+- You will need [NodeJS 10.x+](https://nodejs.org/en/).
+- Please do all of your work on a feature branch.
+- Use `yarn install` to install the correct packages.
+- Use `yarn start` to start the development server.
+- You can view the application at http://localhost:3000.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+## Application Design
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+[![YvesBlue Table](/public/table.png?raw=true 'YvesBlue Table')](https://www.figma.com/file/itPY0qbfyHZG1EmsavVno5/Frontend-Assessment)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Instructions
 
-[http://localhost:3000/api/hello](http://localhost:3000/api/hello) is an endpoint that uses [Route Handlers](https://beta.nextjs.org/docs/routing/route-handlers). This endpoint can be edited in `app/api/hello/route.ts`.
+- Please recreate the table (illustrated above) utilizing React.
+- You can view the public design file in [Figma](https://www.figma.com/file/itPY0qbfyHZG1EmsavVno5/Frontend-Assessment).
+- All required fonts can be included directly from [Google Fonts](https://fonts.google.com/).
+- We’re trying to keep pace with the React community, and are implementing most of new components utilizing React Hooks. We would encourage you to do so for this project.
+- We want to see how you manage state without using external libraries.
+- For styling, you can use any libraries you want; we encourage you to use the libraries you’re most familiar with, as long as you’re writing your own styles (i.e., not utilizing frameworks like Bootstrap, SemanticUI, Blueprint, etc.).
+- We are looking at this deliverable as if it was a "miniature product", so therefore, please organize your code as you would expect to do so in a larger application, utilizing best practices for file organization, architecture, documentation, etc.
+- The [included data file](/public/data.json?raw=true) includes 250 records to populate.
+- Writing tests is not a requirement, but is highly encouraged. You can use any testing framework you are comfortable with.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Acceptance Criteria
 
-## Learn More
+In order to complete the challenge, all acceptance criteria must be met:
 
-To learn more about Next.js, take a look at the following resources:
+- The table should be sortable by each column (note that the last column&mdash;the ESG Score and graph&mdash;are considered one column.)
+- The table should be able to be paged through using the Previous and Next buttons.
+  0
+- The ESG Score chart should be "heat mapped" where the base color is `rgb(0, 27, 66)`, but the opacity is the ESG score (on a scale of 0 to 100.)
+- The ESG Score bar's width should be sized relative to the ESG score (on a scale of 0 to 100.)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Submission
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+When you are ready to submit your solution, please follow these instructions:
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- Commit all of your work to the feature branch, including all of your source code, configuration files, etc.
+- Zip up the folder (minus the `node_modules` folder, please!) and submit it to us via e-mail. _(Note, the zip file should be smaller than a couple of megabytes. If you zip the folder up and it is very large, you likely forgot to remove the `node_modules` folder.)_
