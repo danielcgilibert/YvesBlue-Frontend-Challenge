@@ -2,13 +2,6 @@
 
 Here is a challenge we would like you to complete to help assess and show off your frontend skills. This is an example of a real world problem you would need to solve while working at YvesBlue. We do not expect you to spend more than a couple of hours on this project.
 
-## Getting Started
-
-- You will need [NodeJS 10.x+](https://nodejs.org/en/).
-- Please do all of your work on a feature branch.
-- Use `yarn install` to install the correct packages.
-- Use `yarn start` to start the development server.
-- You can view the application at http://localhost:3000.
 
 ## Application Design
 
