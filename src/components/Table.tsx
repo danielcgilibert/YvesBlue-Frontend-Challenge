@@ -6,12 +6,10 @@ export default function Table() {
   const [page, setPage] = useState(1)
   const [data, setData] = useState(dataJSON.slice(0, page * 10))
 
-  const handlePage = e => {
-    if (page === 1 && e.target.textContent === 'Prev') return
+  const handlePage = (action: 'Prev' | 'Next') => {
+    if (page === 1 && action === 'Prev') return
 
-    e.target.textContent === 'Prev'
-      ? setPage(prev => prev - 1)
-      : setPage(prev => prev + 1)
+    action === 'Prev' ? setPage(prev => prev - 1) : setPage(prev => prev + 1)
     setData(dataJSON.slice(page * 10, (page + 1) * 10))
   }
   return (
@@ -19,16 +17,16 @@ export default function Table() {
       <table>
         <Thead>
           <Tr className="border-b-2">
-            <Th rowSpan="2">Company name</Th>
-            <Th rowSpan="2">Total company revenue</Th>
-            <Th rowSpan="2">Market Capitalization</Th>
-            <Th colSpan="2" className="px-8">
+            <Th rowSpan={2}>Company name</Th>
+            <Th rowSpan={2}>Total company revenue</Th>
+            <Th rowSpan={2}>Market Capitalization</Th>
+            <Th colSpan={2} className="px-8">
               Women (PER 100)
             </Th>
-            <Th colSpan="2" className="px-8">
+            <Th colSpan={2} className="px-8">
               CO2 SCOPE 1 & 2
             </Th>
-            <Th colSpan="2" className="px-8">
+            <Th colSpan={2} className="px-8">
               CO2 SCOPE 3
             </Th>
           </Tr>
@@ -47,7 +45,7 @@ export default function Table() {
           {data.map(item => {
             const progressBar = item['ESG Score'].toFixed(2)
             return (
-              <Tr>
+              <Tr key={item['Company Name']}>
                 <Th>{item['Company Name']}</Th>
                 <Th>{item['Total Revenue']}</Th>
                 <Th>{item['Company Market Cap']}</Th>
@@ -78,14 +76,14 @@ export default function Table() {
       <div className="flex justify-end gap-4 ">
         <button
           className="bg-white text-black px-2 rounded-sm"
-          onClick={handlePage}>
+          onClick={() => handlePage('Prev')}>
           Prev
         </button>
         <span>Page</span>
         <span className="border-b-2 px-2">{page}</span>
         <button
           className="bg-white text-black px-2 rounded-sm"
-          onClick={handlePage}>
+          onClick={() => handlePage('Next')}>
           Next
         </button>
       </div>
@@ -93,13 +91,28 @@ export default function Table() {
   )
 }
 
-function Thead({ children }: { children: React.ReactNode }) {
+function Thead({
+  children,
+}: {
+  children: React.ReactNode
+  className?: string
+}) {
   return <thead className="font-bold text-lg ">{children}</thead>
 }
 
-function Tr(props: { children: React.ReactNode }) {
+function Tr(props: {
+  children: React.ReactNode
+  className?: string
+  rowSpan?: number
+  colSpan?: number
+}) {
   return <tr {...props}>{props.children}</tr>
 }
-function Th(props: { children: React.ReactNode }) {
+function Th(props: {
+  children: React.ReactNode
+  className?: string
+  rowSpan?: number
+  colSpan?: number
+}) {
   return <th {...props}>{props.children}</th>
 }
