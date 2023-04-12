@@ -1,5 +1,5 @@
 'use client'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import dataJSON from '../../public/data.json'
 
 export default function Table() {
@@ -12,6 +12,11 @@ export default function Table() {
     action === 'Prev' ? setPage(prev => prev - 1) : setPage(prev => prev + 1)
     setData(dataJSON.slice(page * 10, (page + 1) * 10))
   }
+
+  useEffect(() => {
+    setData(dataJSON.slice(page * 10, (page + 1) * 10))
+  }, [page])
+
   return (
     <div className="flex flex-col gap-5 min-w-full  ">
       <table>
@@ -42,10 +47,10 @@ export default function Table() {
         </Thead>
 
         <tbody>
-          {data.map(item => {
+          {data.map((item, index) => {
             const progressBar = item['ESG Score'].toFixed(2)
             return (
-              <Tr key={item['Company Name']}>
+              <Tr key={index}>
                 <Th>{item['Company Name']}</Th>
                 <Th>{item['Total Revenue']}</Th>
                 <Th>{item['Company Market Cap']}</Th>
@@ -80,7 +85,15 @@ export default function Table() {
           Prev
         </button>
         <span>Page</span>
-        <span className="border-b-2 px-2">{page}</span>
+        <form>
+          <input
+            type="number"
+            className="border-b-2 px-2 text-black w-14 "
+            value={page}
+            min={1}
+            onChange={e => setPage(Number(e.target.value))}
+          />
+        </form>
         <button
           className="bg-white text-black px-2 rounded-sm"
           onClick={() => handlePage('Next')}>
